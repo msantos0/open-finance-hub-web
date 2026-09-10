@@ -8,6 +8,7 @@ interface HeaderProps {
 
 export function Header({ onMenuClick }: HeaderProps) {
   const { pathname } = useLocation()
+  const isTransactionsPage = pathname.startsWith('/transactions')
   const isAccountsPage = pathname.startsWith('/accounts')
 
   return (
@@ -17,8 +18,8 @@ export function Header({ onMenuClick }: HeaderProps) {
           <Menu />
         </IconButton>
         <Box sx={{ flexGrow: 1 }}>
-          <Typography variant="h6" color="text.primary" sx={{ fontWeight: 800 }}>{isAccountsPage ? 'Accounts' : 'Dashboard'}</Typography>
-          <Typography variant="body2" color="text.secondary" sx={{ display: { xs: 'none', sm: 'block' } }}>{isAccountsPage ? 'Manage your financial accounts' : 'Your financial overview'}</Typography>
+          <Typography variant="h6" color="text.primary" sx={{ fontWeight: 800 }}>{isTransactionsPage ? 'Transactions' : isAccountsPage ? 'Accounts' : 'Dashboard'}</Typography>
+          <Typography variant="body2" color="text.secondary" sx={{ display: { xs: 'none', sm: 'block' } }}>{isTransactionsPage ? 'Track your income and expenses' : isAccountsPage ? 'Manage your financial accounts' : 'Your financial overview'}</Typography>
         </Box>
         <Stack direction="row" spacing={1} sx={{ alignItems: 'center' }}>
           <IconButton aria-label="Search"><Search /></IconButton>
