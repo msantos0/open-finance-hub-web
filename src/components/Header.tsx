@@ -1,11 +1,15 @@
 import { Menu, NotificationsNone, Search } from '@mui/icons-material'
 import { AppBar, Avatar, Box, IconButton, Stack, Toolbar, Typography } from '@mui/material'
+import { useLocation } from 'react-router-dom'
 
 interface HeaderProps {
   onMenuClick: () => void
 }
 
 export function Header({ onMenuClick }: HeaderProps) {
+  const { pathname } = useLocation()
+  const isCategoriesPage = pathname.startsWith('/categories')
+
   return (
     <AppBar position="sticky" color="inherit" elevation={0} sx={{ borderBottom: '1px solid', borderColor: 'divider' }}>
       <Toolbar sx={{ minHeight: { xs: 68, md: 76 }, gap: 2 }}>
@@ -13,8 +17,8 @@ export function Header({ onMenuClick }: HeaderProps) {
           <Menu />
         </IconButton>
         <Box sx={{ flexGrow: 1 }}>
-          <Typography variant="h6" color="text.primary" sx={{ fontWeight: 800 }}>Dashboard</Typography>
-          <Typography variant="body2" color="text.secondary" sx={{ display: { xs: 'none', sm: 'block' } }}>Your financial overview</Typography>
+          <Typography variant="h6" color="text.primary" sx={{ fontWeight: 800 }}>{isCategoriesPage ? 'Categories' : 'Dashboard'}</Typography>
+          <Typography variant="body2" color="text.secondary" sx={{ display: { xs: 'none', sm: 'block' } }}>{isCategoriesPage ? 'Organize your income and expenses' : 'Your financial overview'}</Typography>
         </Box>
         <Stack direction="row" spacing={1} sx={{ alignItems: 'center' }}>
           <IconButton aria-label="Search"><Search /></IconButton>
