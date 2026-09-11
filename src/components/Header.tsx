@@ -8,19 +8,23 @@ interface HeaderProps {
 
 export function Header({ onMenuClick }: HeaderProps) {
   const { pathname } = useLocation()
-
   const isCategoriesPage = pathname.startsWith('/categories')
+  const isTransactionsPage = pathname.startsWith('/transactions')
   const isAccountsPage = pathname.startsWith('/accounts')
 
   const title = isCategoriesPage
     ? 'Categories'
-    : isAccountsPage
+    : isTransactionsPage
+      ? 'Transactions'
+      : isAccountsPage
       ? 'Accounts'
       : 'Dashboard'
 
   const subtitle = isCategoriesPage
     ? 'Organize your income and expenses'
-    : isAccountsPage
+    : isTransactionsPage
+      ? 'Track your income and expenses'
+      : isAccountsPage
       ? 'Manage your financial accounts'
       : 'Your financial overview'
 
