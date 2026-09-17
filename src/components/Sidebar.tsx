@@ -25,7 +25,7 @@ interface SidebarProps {
 }
 
 const menuItems = [
-  { label: 'Dashboard', path: '/', icon: <DashboardOutlined /> },
+  { label: 'Dashboard', path: '/dashboard', icon: <DashboardOutlined /> },
   { label: 'Accounts', path: '/accounts', icon: <AccountBalanceWalletOutlined /> },
   { label: 'Categories', path: '/categories', icon: <CategoryOutlined /> },
   { label: 'Transactions', path: '/transactions', icon: <ReceiptLongOutlined /> },

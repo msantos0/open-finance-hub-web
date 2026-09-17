@@ -1,6 +1,7 @@
-import { Menu, NotificationsNone, Search } from '@mui/icons-material'
-import { AppBar, Avatar, Box, IconButton, Stack, Toolbar, Typography } from '@mui/material'
-import { useLocation } from 'react-router-dom'
+import { Logout, Menu, NotificationsNone, Search } from '@mui/icons-material'
+import { AppBar, Avatar, Box, IconButton, Stack, Toolbar, Tooltip, Typography } from '@mui/material'
+import { useLocation, useNavigate } from 'react-router-dom'
+import { authService } from '../services/authService'
 
 interface HeaderProps {
   onMenuClick: () => void
@@ -8,6 +9,7 @@ interface HeaderProps {
 
 export function Header({ onMenuClick }: HeaderProps) {
   const { pathname } = useLocation()
+  const navigate = useNavigate()
   const isCategoriesPage = pathname.startsWith('/categories')
   const isTransactionsPage = pathname.startsWith('/transactions')
   const isAccountsPage = pathname.startsWith('/accounts')
@@ -27,6 +29,11 @@ export function Header({ onMenuClick }: HeaderProps) {
       : isAccountsPage
       ? 'Manage your financial accounts'
       : 'Your financial overview'
+
+  const handleLogout = () => {
+    authService.logout()
+    navigate('/login', { replace: true })
+  }
 
   return (
     <AppBar position="sticky" color="inherit" elevation={0} sx={{ borderBottom: '1px solid', borderColor: 'divider' }}>
@@ -57,6 +64,12 @@ export function Header({ onMenuClick }: HeaderProps) {
           <IconButton aria-label="Notifications">
             <NotificationsNone />
           </IconButton>
+
+          <Tooltip title="Log out">
+            <IconButton onClick={handleLogout} aria-label="Log out">
+              <Logout />
+            </IconButton>
+          </Tooltip>
 
           <Avatar
             sx={{
