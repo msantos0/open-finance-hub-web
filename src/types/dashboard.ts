@@ -1,6 +1,6 @@
 export interface DashboardSummary {
-  totalIncome: number
-  totalExpense: number
   currentBalance: number
-  transactionCount: number
+  monthlyIncome: number
+  monthlyExpense: number
+  monthlyResult: number
 }
