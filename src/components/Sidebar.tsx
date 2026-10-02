@@ -4,6 +4,7 @@ import {
   Close,
   DashboardOutlined,
   ReceiptLongOutlined,
+  ShowChartOutlined,
 } from '@mui/icons-material'
 import {
   Box,
@@ -29,6 +30,7 @@ const menuItems = [
   { label: 'Accounts', path: '/accounts', icon: <AccountBalanceWalletOutlined /> },
   { label: 'Categories', path: '/categories', icon: <CategoryOutlined /> },
   { label: 'Transactions', path: '/transactions', icon: <ReceiptLongOutlined /> },
+  { label: 'Investments', path: '/investments', icon: <ShowChartOutlined /> },
 ]
 
 function SidebarContent({ onClose }: { onClose: () => void }) {

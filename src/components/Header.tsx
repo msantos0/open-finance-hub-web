@@ -13,6 +13,7 @@ export function Header({ onMenuClick }: HeaderProps) {
   const isCategoriesPage = pathname.startsWith('/categories')
   const isTransactionsPage = pathname.startsWith('/transactions')
   const isAccountsPage = pathname.startsWith('/accounts')
+  const isInvestmentsPage = pathname.startsWith('/investments')
 
   const title = isCategoriesPage
     ? 'Categories'
@@ -20,6 +21,8 @@ export function Header({ onMenuClick }: HeaderProps) {
       ? 'Transactions'
       : isAccountsPage
       ? 'Accounts'
+      : isInvestmentsPage
+      ? 'Investments'
       : 'Dashboard'
 
   const subtitle = isCategoriesPage
@@ -28,6 +31,8 @@ export function Header({ onMenuClick }: HeaderProps) {
       ? 'Track your income and expenses'
       : isAccountsPage
       ? 'Manage your financial accounts'
+      : isInvestmentsPage
+      ? 'Manage your investment portfolio'
       : 'Your financial overview'
 
   const handleLogout = () => {
